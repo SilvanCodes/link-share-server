@@ -1,0 +1,30 @@
+# import Website, WebsiteSubscriptionPayload from "./generated/prisma.graphql"
+
+type Query {
+  info: String!
+  websites: [Website!]!
+  website(id: ID!): Website
+}
+
+type Mutation {
+  addWebsite(url: String!): Website!
+  signup(email: String!, password: String!, name: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+}
+
+type Subscription {
+  newWebsite: WebsiteSubscriptionPayload
+}
+
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  websites: [Website!]!
+}

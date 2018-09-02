@@ -1,0 +1,14 @@
+type Website {
+  id: ID! @unique
+  createdAt: DateTime!
+  url: String!
+  belongsTo: User
+}
+
+type User {
+  id: ID! @unique
+  name: String!
+  email: String! @unique
+  password: String!
+  websites: [Website!]!
+}
